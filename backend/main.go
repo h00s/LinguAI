@@ -1,7 +1,16 @@
 package main
 
-import "fmt"
+import (
+	"github.com/go-raptor/raptor/v2"
+	"github.com/h00s/linguai/config"
+	"github.com/h00s/linguai/config/initializers"
+)
 
 func main() {
-	fmt.Println("Hello, World!")
+	r := raptor.NewRaptor()
+
+	r.Init(initializers.App(r.Utils.Config))
+	r.RegisterRoutes(config.Routes())
+
+	r.Listen()
 }
