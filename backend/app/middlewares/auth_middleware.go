@@ -12,7 +12,7 @@ type AuthMiddleware struct {
 }
 
 func (am *AuthMiddleware) New(c *raptor.Context) error {
-	if authKey := c.Get("Authorization"); authKey != am.Auth.AuthKey {
+	if authKey := c.Get("Authorization"); authKey != am.Auth.Key {
 		return c.JSONError(raptor.NewErrorUnauthorized("Invalid auth key"))
 	}
 

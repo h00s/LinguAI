@@ -9,16 +9,16 @@ import (
 type AuthService struct {
 	raptor.Service
 
-	AuthKey string
+	Key string
 }
 
 func NewAuthService(c *raptor.Config) *AuthService {
 	as := &AuthService{
-		AuthKey: c.AppConfig["auth_key"].(string),
+		Key: c.AppConfig["auth_key"].(string),
 	}
 
 	as.OnInit(func() {
-		if as.AuthKey == "" {
+		if as.Key == "" {
 			as.Log.Error("Error creating Auth service; missing auth key")
 			os.Exit(1)
 		}
