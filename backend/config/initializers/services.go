@@ -9,5 +9,6 @@ func Services(c *raptor.Config) raptor.Services {
 	return raptor.Services{
 		services.NewAuthService(c),
 		services.NewGrammarService(c),
+		services.NewTranslatorService(c),
 	}
 }

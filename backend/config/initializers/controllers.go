@@ -8,6 +8,9 @@ import (
 func Controllers() raptor.Controllers {
 	return raptor.Controllers{
 		&controllers.GrammarController{},
+		&controllers.TranslatorController{},
+		&controllers.LanguagesController{},
+		&controllers.ModelsController{},
 		&controllers.SPAController{},
 	}
 }
