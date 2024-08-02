@@ -14,6 +14,9 @@ type AuthMiddleware struct {
 }
 
 func (am *AuthMiddleware) New(c *raptor.Context) error {
+	if c.Path() == "/api/v1/auth/login" {
+		return c.Next()
+	}
 	authHeader := c.Get("Authorization")
 	if authHeader == "" {
 		return c.JSONError(raptor.NewErrorUnauthorized("Missing auth header"))
