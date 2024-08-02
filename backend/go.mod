@@ -2,7 +2,9 @@ module github.com/h00s/linguai
 
 go 1.22.5
 
-require github.com/go-raptor/raptor/v2 v2.0.0-alpha.5
+// replace github.com/go-raptor/raptor/v2 => ../../go-raptor/raptor/v2
+
+require github.com/go-raptor/raptor/v2 v2.0.0-alpha.7
 
 require (
 	github.com/BurntSushi/toml v1.4.0 // indirect

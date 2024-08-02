@@ -11,6 +11,8 @@ import (
 type AuthService struct {
 	raptor.Service
 
+	LoginPath string
+
 	Username string
 	Password string
 	Key      string
@@ -22,15 +24,17 @@ func NewAuthService(c *raptor.Config) *AuthService {
 		Password: c.AppConfig["auth_password"].(string),
 		Key:      c.AppConfig["auth_key"].(string),
 	}
-
-	as.OnInit(func() {
-		if as.Key == "" || as.Username == "" || as.Password == "" {
-			as.Log.Error("Error creating Auth service; missing auth username, password or key")
-			os.Exit(1)
-		}
-	})
-
+	as.OnInit(as.Init)
 	return as
+}
+
+func (as *AuthService) Init() {
+	if loginPath, err := as.Routes.Path("AuthController", "Login"); err == nil {
+		as.LoginPath = loginPath
+	} else {
+		as.Log.Error("Error getting login path", "error", err.Error())
+		os.Exit(1)
+	}
 }
 
 func (as *AuthService) Login(user models.User) (models.User, error) {
