@@ -9,7 +9,7 @@ type LanguagesService struct {
 	raptor.Service
 }
 
-func (ts *LanguagesService) All() []models.Language {
+func (ls *LanguagesService) All() []models.Language {
 	return []models.Language{
 		{
 			Code: "hr",

@@ -8,7 +8,12 @@ import (
 func Services(c *raptor.Config) raptor.Services {
 	return raptor.Services{
 		services.NewAuthService(c),
-		services.NewGrammarService(c),
-		services.NewTranslatorService(c),
+		services.NewLLMService(c),
+
+		&services.GrammarService{},
+		&services.TranslatorService{},
+
+		&services.ModelsService{},
+		&services.LanguagesService{},
 	}
 }

@@ -9,7 +9,7 @@ type ModelsService struct {
 	raptor.Service
 }
 
-func (ts *ModelsService) All() []models.Model {
+func (ms *ModelsService) All() []models.Model {
 	return []models.Model{
 		{
 			Code: "gpt-4o",
