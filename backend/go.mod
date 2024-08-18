@@ -5,7 +5,7 @@ go 1.23
 // replace github.com/go-raptor/raptor/v2 => ../../go-raptor/raptor/v2
 
 require (
-	github.com/go-raptor/raptor/v2 v2.0.0-alpha.8
+	github.com/go-raptor/raptor/v2 v2.0.0-alpha.9
 	github.com/madebywelch/anthropic-go/v3 v3.1.0
 	github.com/sashabaranov/go-openai v1.28.2
 )
