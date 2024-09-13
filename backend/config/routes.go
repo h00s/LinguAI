@@ -1,6 +1,6 @@
 package config
 
-import "github.com/go-raptor/raptor/v2"
+import "github.com/go-raptor/raptor/v3"
 
 func Routes() raptor.Routes {
 	return raptor.CollectRoutes(
@@ -14,13 +14,12 @@ func Routes() raptor.Routes {
 				),
 				raptor.Scope("/translator"),
 				raptor.Scope("/languages",
-					raptor.Route("GET", "/", "LanguagesController", "Index"),
+					raptor.Route("GET", "", "LanguagesController", "Index"),
 				),
 				raptor.Scope("/models",
-					raptor.Route("GET", "/", "ModelsController", "All"),
+					raptor.Route("GET", "", "ModelsController", "All"),
 				),
 			),
 		),
-		raptor.Route("GET", "*", "SPAController", "Index"),
 	)
 }

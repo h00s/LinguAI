@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"github.com/go-raptor/raptor/v2"
+	"github.com/go-raptor/raptor/v3"
 	"github.com/h00s/linguai/app/models"
 	"github.com/h00s/linguai/app/services"
 )
@@ -14,7 +14,7 @@ type AuthController struct {
 
 func (ac *AuthController) Login(c *raptor.Context) error {
 	var user models.User
-	if err := c.Bind().JSON(&user); err != nil {
+	if err := c.Bind(&user); err != nil {
 		return c.JSONError(err, 400)
 	}
 

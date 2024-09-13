@@ -3,7 +3,7 @@ package middlewares
 import (
 	"strings"
 
-	"github.com/go-raptor/raptor/v2"
+	"github.com/go-raptor/raptor/v3"
 	"github.com/h00s/linguai/app/services"
 )
 
@@ -15,21 +15,21 @@ type AuthMiddleware struct {
 
 func (am *AuthMiddleware) New(c *raptor.Context) error {
 	if c.Path() == am.Auth.LoginPath {
-		return c.Next()
+		return nil
 	}
-	authHeader := c.Get("Authorization")
+	authHeader := c.Request().Header.Get("Authorization")
 	if authHeader == "" {
-		return c.JSONError(raptor.NewErrorUnauthorized("Missing auth header"))
+		return raptor.NewErrorUnauthorized("Missing auth header")
 	}
 
 	parts := strings.Split(authHeader, " ")
 	if len(parts) != 2 || parts[0] != "Bearer" {
-		return c.JSONError(raptor.NewErrorUnauthorized("Invalid auth header"))
+		return raptor.NewErrorUnauthorized("Invalid auth header")
 	}
 
 	if authKey := parts[1]; authKey != am.Auth.Key {
-		return c.JSONError(raptor.NewErrorUnauthorized("Invalid auth key"))
+		return raptor.NewErrorUnauthorized("Invalid auth key")
 	}
 
-	return c.Next()
+	return nil
 }
