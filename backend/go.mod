@@ -5,7 +5,7 @@ go 1.23
 // replace github.com/go-raptor/raptor/v2 => ../../go-raptor/raptor/v2
 
 require (
-	github.com/go-raptor/raptor/v3 v3.0.0-alpha.9
+	github.com/go-raptor/raptor/v3 v3.0.1
 	github.com/madebywelch/anthropic-go/v3 v3.1.0
 	github.com/sashabaranov/go-openai v1.28.2
 )
@@ -39,11 +39,11 @@ require (
 	github.com/vmihailenco/msgpack/v5 v5.4.1 // indirect
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
 	github.com/wk8/go-ordered-map/v2 v2.1.8 // indirect
-	golang.org/x/crypto v0.24.0 // indirect
-	golang.org/x/net v0.26.0 // indirect
-	golang.org/x/sys v0.24.0 // indirect
-	golang.org/x/text v0.17.0 // indirect
-	golang.org/x/time v0.5.0 // indirect
+	golang.org/x/crypto v0.27.0 // indirect
+	golang.org/x/net v0.29.0 // indirect
+	golang.org/x/sys v0.25.0 // indirect
+	golang.org/x/text v0.18.0 // indirect
+	golang.org/x/time v0.6.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	gorm.io/gorm v1.25.11 // indirect
 )
