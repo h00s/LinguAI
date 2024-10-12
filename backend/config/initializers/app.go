@@ -8,7 +8,6 @@ import (
 func App(c *raptor.Config) *raptor.AppInitializer {
 	return &raptor.AppInitializer{
 		Routes:      config.Routes(),
-		Database:    Database(),
 		Services:    Services(c),
 		Middlewares: Middlewares(),
 		Controllers: Controllers(),

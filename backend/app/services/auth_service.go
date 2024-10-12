@@ -2,7 +2,6 @@ package services
 
 import (
 	"errors"
-	"os"
 
 	"github.com/go-raptor/raptor/v3"
 	"github.com/h00s/linguai/app/models"
@@ -28,13 +27,13 @@ func NewAuthService(c *raptor.Config) *AuthService {
 	return as
 }
 
-func (as *AuthService) Init() {
+func (as *AuthService) Init() error {
 	if loginPath, err := as.Routes.Path("AuthController", "Login"); err == nil {
 		as.LoginPath = loginPath
 	} else {
-		as.Log.Error("Error getting login path", "error", err.Error())
-		os.Exit(1)
+		return err
 	}
+	return nil
 }
 
 func (as *AuthService) Login(user models.User) (models.User, error) {

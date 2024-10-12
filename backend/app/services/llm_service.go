@@ -15,13 +15,14 @@ type LLMService struct {
 func NewLLMService(c *raptor.Config) *LLMService {
 	llms := &LLMService{}
 
-	llms.OnInit(func() {
+	llms.OnInit(func() error {
 		var err error
 		if llms.Anthropic, err = internal.NewAnthropic(llms.Config.AppConfig["anthropic_key"].(string)); err != nil {
 			llms.Log.Error("Error creating Claude", "error", err.Error())
 		}
 
 		llms.OpenAI = internal.NewOpenAI(llms.Config.AppConfig["openai_key"].(string))
+		return nil
 	})
 
 	return llms
