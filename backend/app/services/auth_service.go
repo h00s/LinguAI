@@ -14,14 +14,14 @@ type AuthService struct {
 
 	Username string
 	Password string
-	Key      string
+	Token    string
 }
 
 func NewAuthService(c *raptor.Config) *AuthService {
 	as := &AuthService{
 		Username: c.AppConfig["auth_username"].(string),
 		Password: c.AppConfig["auth_password"].(string),
-		Key:      c.AppConfig["auth_key"].(string),
+		Token:    c.AppConfig["auth_token"].(string),
 	}
 	as.OnInit(as.Init)
 	return as
@@ -38,7 +38,7 @@ func (as *AuthService) Init() error {
 
 func (as *AuthService) Login(user models.User) (models.User, error) {
 	if user.Username == as.Username && user.Password == as.Password {
-		user.Key = as.Key
+		user.Token = as.Token
 		return user, nil
 	}
 

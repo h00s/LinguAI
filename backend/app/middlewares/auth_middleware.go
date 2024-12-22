@@ -27,8 +27,8 @@ func (am *AuthMiddleware) New(c *raptor.Context) error {
 		return raptor.NewErrorUnauthorized("Invalid auth header")
 	}
 
-	if authKey := parts[1]; authKey != am.Auth.Key {
-		return raptor.NewErrorUnauthorized("Invalid auth key")
+	if authKey := parts[1]; authKey != am.Auth.Token {
+		return raptor.NewErrorUnauthorized("Invalid auth token")
 	}
 
 	return nil
